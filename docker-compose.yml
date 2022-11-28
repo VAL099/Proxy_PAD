@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+    Proxy:
+        image: proxy
+        ports: 
+            - "7000:7000"
+        environment:
+            db_port: 4404
+        entrypoint: [ "uvicorn", "proxy:gateway", "--port", "7000", "--host", "0.0.0.0"]
+    
+    Redis:
+        image: redis
+        ports: 
+            - "6379:6379"
