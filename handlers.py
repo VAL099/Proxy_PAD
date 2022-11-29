@@ -1,6 +1,5 @@
 import string, random, base64
 import const
-from requests.sessions import Session
 import requests
 
 def generate_token():
