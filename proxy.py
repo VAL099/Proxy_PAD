@@ -29,7 +29,7 @@ async def solve_request(request_model: models.ProxyRequest, authorisation_token:
             if request_model.content == 'ALL':
                 if request_model.content in cache_service: # means 'ALL'
                     resp = handlers.caching(cs = cache_service, op = 'req', k = request_model.content)
-                    print('FROM REDIS!')
+                    print('FROM REDIS!')    
                     return json.loads(resp.decode().replace("'",'"'))  
                 else:
                     r = requests.get(url = f'http://host.docker.internal:{ssu}/adv/all', headers = {'authorisation-token':const.AUTH_TOKEN} )
@@ -71,7 +71,7 @@ async def solve_request(request_model: models.ProxyRequest, authorisation_token:
             r = requests.post(url = f'http://host.docker.internal:{ssu}/adv/post',
                             headers = {'authorisation-token':const.AUTH_TOKEN}, json = request_model.content)
             handlers.bd_sync(rt = 'POST', master = ssu, payload = request_model.content) # sync DB
-            cache_service.delete('ALL') # resete caching when request == GET all
+            # cache_service.delete('ALL') # resete caching when request == GET all
             return Response(status_code = r.status_code)
 
         # handle PATCH requests
