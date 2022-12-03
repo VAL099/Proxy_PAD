@@ -23,11 +23,11 @@ def bd_sync(**kwargs):
     m_s = {const.S1:const.S2, const.S2:const.S1} # master-slave relation
 
     if rt == 'POST':
-        r = requests.post(url = f'http://host.docker.internal:{m_s.get(master)}/adv/post',
+        r = requests.post(url = f'{m_s.get(master)}/adv/post',
                             headers = {'authorisation-token':const.AUTH_TOKEN}, json = payload)
     elif rt == 'PATCH':
-        r = requests.patch(url = f'http://host.docker.internal:{m_s.get(master)}/adv/patch', headers = {'authorisation-token':const.AUTH_TOKEN}, 
+        r = requests.patch(url = f'{m_s.get(master)}/adv/patch', headers = {'authorisation-token':const.AUTH_TOKEN}, 
                                 json = payload, params = {'adv_id':payload['id']})
     elif rt == 'DELETE':
-        r = requests.delete(url = f'http://host.docker.internal:{m_s.get(master)}/adv/rm',
+        r = requests.delete(url = f'{m_s.get(master)}/adv/rm',
                                 headers = {'authorisation-token':const.AUTH_TOKEN}, params = {'adv_id':payload})
