@@ -11,6 +11,10 @@ attr_server = roundrobin.basic([const.S1, const.S2]) # load balancer using round
 
 gateway = FastAPI()
 
+@gateway.get('/w')
+def welcome():
+    return {'msg':'Proxy is ALIVE!'}
+
 @gateway.get('/auth')
 async def authorization():
     user_token = handlers.generate_token()
