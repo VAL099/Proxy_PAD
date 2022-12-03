@@ -1,0 +1,1 @@
+web: uvicorn proxy:gateway --host 0.0.0.0 --port $PORT

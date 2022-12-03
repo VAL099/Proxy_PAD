@@ -1,13 +1,4 @@
-S1 = 7100
-S2 = 7200
-DB1 = 4404
-DB2 = 4406
-PROXY = 7000
-CLIENT = 4587
-CACHING = 7500
-HOST = 'localhost'
-
-DB_USERNAME = 'root'
-DB_PASSWORD = 'valeriy099'
+S1 = "https://pad-server1.herokuapp.com/"
+S2 = "https://pad-server2.herokuapp.com/"
 
 AUTH_TOKEN = '09f90c6d05f156dfe301cb49e08834fbab5ea662b0b550dd5f4a2e84418372c5' # LL2_PAD
